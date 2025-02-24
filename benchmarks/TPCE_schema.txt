@@ -1,0 +1,399 @@
+// ---------------------- TABLES ----------------------
+// size, type, name
+
+// Customer Tables
+
+TABLE=ACCOUNT_PERMISSION
+    8,uint64_t,AP_CA_ID
+    5,string,AP_ACL
+    20,string,AP_TAX_ID
+    25,string,AP_L_NAME
+    20,string,AP_F_NAME
+
+TABLE=CUSTOMER
+    8,uint64_t,C_ID
+    20,string,C_TAX_ID
+    5,string,C_ST_ID
+    25,string,C_L_NAME
+    20,string,C_F_NAME
+    2,string,C_GNDR
+    8,uint64_t,C_TIER
+    8,uint64_t,C_DOB
+    8,uint64_t,C_AD_ID
+    4,string,C_CTRY_1
+    4,string,C_AREA_1
+    10,string,C_LOCAL_1
+    5,string,C_EXT_1
+    4,string,C_CTRY_2
+    4,string,C_AREA_2
+    10,string,C_LOCAL_2
+    5,string,C_EXT_2
+    4,string,C_CTRY_3
+    4,string,C_AREA_3
+    10,string,C_LOCAL_3
+    5,string,C_EXT_3
+    50,string,C_EMAIL_1
+    50,string,C_EMAIL_2
+
+TABLE=CUSTOMER_ACCOUNT
+    8,uint64_t,CA_ID
+    8,uint64_t,CA_B_ID
+    8,uint64_t,CA_C_ID
+    50,string,CA_NAME
+    8,uint64_t,CA_TAX_ST
+    8,double,CA_BAL
+
+TABLE=CUSTOMER_TAXRATE
+    5,string,CX_TX_ID
+    8,uint64_t,CX_C_ID
+
+TABLE=HOLDING
+    8,uint64_t,H_T_ID
+    8,uint64_t,H_CA_ID
+    15,string,H_S_SYMB
+    8,uint64_t,H_DTS
+    8,double,H_PRICE
+    8,uint64_t,H_QTY
+
+TABLE=HOLDING_HISTORY
+    8,uint64_t,HH_H_T_ID
+    8,uint64_t,HH_T_ID
+    8,uint64_t,HH_BEFORE_QTY
+    8,uint64_t,HH_AFTER_QTY
+
+TABLE=HOLDING_SUMMARY
+    8,uint64_t,HS_CA_ID
+    15,string,HS_S_SYMB
+    8,uint64_t,HS_QTY
+
+TABLE=WATCH_ITEM
+    8,uint64_t,WI_WL_ID
+    15,string,WI_S_SYMB
+
+TABLE=WATCH_LIST
+    8,uint64_t,WL_ID
+    8,uint64_t,WL_C_ID
+
+// Broker Tables
+
+TABLE=BROKER
+    8,uint64_t,B_ID
+    5,string,B_ST_ID
+    50,string,B_NAME
+    8,uint64_t,B_NUM_TRADES
+    8,double,B_COMM_TOTAL
+
+TABLE=CASH_TRANSACTION
+    8,uint64_t,CT_T_ID
+    8,uint64_t,CT_DTS 
+    10,double,CT_AMT
+    100,string,CT_NAME
+
+TABLE=CHARGE
+    4,string,CH_TT_ID
+    8,uint64_t,CH_C_TIER
+    8,double,CH_CHRG
+
+TABLE=COMMISSION_RATE
+    8,uint64_t,CR_C_TIER
+    4,string,CR_TT_ID
+    7,string,CR_EX_ID
+    8,uint64_t,CR_FROM_QTY
+    8,uint64_t,CR_TO_QTY
+    8,double,CR_RATE
+
+TABLE=SETTLEMENT
+    8,uint64_t,SE_T_ID
+    40,string,SE_CASH_TYPE
+    8,uint64_t,SE_CASH_DUE_DATE
+    8,double,SE_AMT
+
+TABLE=TRADE
+    8,uint64_t,T_ID
+    8,uint64_t,T_DTS
+    5,string,T_ST_ID
+    4,string,T_TT_ID
+    1,bool,T_IS_CASH
+    15,string,T_S_SYMB
+    8,uint64_t,T_QTY
+    8,double,T_BID_PRICE
+    8,uint64_t,T_CA_ID
+    50,string,T_EXEC_NAME
+    8,double,T_TRADE_PRICE
+    8,double,T_CHRG
+    8,double,T_COMM
+    8,double,T_TAX
+    1,bool,T_LIFO
+
+TABLE=TRADE_HISTORY
+    8,uint64_t,TH_T_ID
+    8,uint64_t,TH_DTS
+    5,string,TH_ST_ID
+
+TABLE=TRADE_REQUEST
+    8,uint64_t,TR_T_ID
+    4,string,TR_TT_ID
+    15,string,TR_S_SYMB
+    8,uint64_t,TR_QTY
+    8,double,TR_BID_PRICE
+    8,uint64_t,TR_B_ID
+
+TABLE=TRADE_TYPE
+    4,string,TT_ID
+    12,string,TT_NAME
+    1,bool,TT_IS_SELL
+    1,bool,TT_IS_MRKT
+
+// Market Tables
+
+TABLE=COMPANY
+    8,uint64_t,CO_ID
+    5,string,CO_ST_ID
+    60,string,CO_NAME
+    3,string,CO_IN_ID
+    5,string,CO_SP_RATE
+    46,string,CO_CEO
+    8,uint64_t,CO_AD_ID
+    150,string,CO_DESC
+    8,uint64_t,CO_OPEN_DATE
+
+TABLE=COMPANY_COMPETITOR
+    8,uint64_t,CP_CO_ID
+    8,uint64_t,CP_COMP_CO_ID
+    3,string,CP_IN_ID
+
+TABLE=DAILY_MARKET
+    8,uint64_t,DM_DATE
+    15,string,DM_S_SYMB
+    8,double,DM_CLOSE
+    8,double,DM_HIGH
+    8,double,DM_LOW
+    8,uint64_t,DM_VOL
+
+TABLE=EXCHANGE
+    7,string,EX_ID
+    100,string,EX_NAME
+    8,uint64_t,EX_NUM_SYMB
+    8,uint64_t,EX_OPEN
+    8,uint64_t,EX_CLOSE
+    150,string,EX_DESC
+    8,uint64_t,EX_AD_ID
+
+TABLE=FINANCIAL
+    8,uint64_t,FI_CO_ID
+    8,uint64_t,FI_YEAR
+    8,uint64_t,FI_QTR
+    8,uint64_t,FI_QTR_START_DATE
+    8,double,FI_REVENUE
+    8,double,FI_NET_EARN
+    8,double,FI_BASIC_EPS
+    8,double,FI_DILUT_EPS
+    8,double,FI_MARGIN
+    8,double,FI_INVENTORY
+    8,double,FI_ASSETS
+    8,double,FI_LIABILITY
+    8,uint64_t,FI_OUT_BASIC
+    8,uint64_t,FI_OUT_DILUT
+
+TABLE=INDUSTRY
+    3,string,IN_ID
+    50,string,IN_NAME
+    3,string,IN_SC_ID
+
+TABLE=LAST_TRADE
+    15,string,LT_S_SYMB
+    8,uint64_t,LT_DTS
+    8,double,LT_PRICE
+    8,double,LT_OPEN_PRICE
+    8,uint64_t,LT_VOL
+
+TABLE=NEWS_ITEM
+    8,uint64_t,NI_ID
+    80,string,NI_HEADLINE
+    255,string,NI_SUMMARY
+    100000,string,NI_ITEM
+    8,uint64_t,NI_DTS
+    30,string,NI_SOURCE
+    30,string,NI_AUTHOR
+
+TABLE=NEWS_XREF
+    8,uint64_t,NX_NI_ID
+    8,uint64_t,NX_CO_ID
+
+TABLE=SECTOR
+    3,string,SC_ID
+    30,string,SC_NAME
+
+TABLE=SECURITY
+    15,string,S_SYMB
+    7,string,S_ISSUE
+    5,string,S_ST_ID
+    70,string,S_NAME
+    7,string,S_EX_ID
+    8,uint64_t,S_CO_ID
+    8,uint64_t,S_NUM_OUT
+    8,uint64_t,S_START_DATE
+    8,uint64_t,S_EXCH_DATE
+    8,double,S_PE
+    8,double,S_52WK_HIGH
+    8,uint64_t,S_52WK_HIGH_DATE
+    8,double,S_52WK_LOW
+    8,uint64_t,S_52WK_LOW_DATE
+    8,double,S_DIVIDEND
+    8,double,S_YIELD
+
+// Dimension Tables
+
+TABLE=ADDRESS
+    8,uint64_t,AD_ID
+    80,string,AD_LINE1
+    80,string,AD_LINE2
+    12,string,AD_ZC_CODE
+    80,string,AD_CTRY
+
+TABLE=STATUS_TYPE
+    5,string,ST_ID
+    10,string,ST_NAME
+
+TABLE=TAXRATE
+    5,string,TX_ID
+    50,string,TX_NAME
+    8,double,TX_RATE
+
+TABLE=ZIP_CODE
+    12,string,ZC_CODE
+    80,string,ZC_TOWN
+    80,string,ZC_DIV
+
+// ---------------------- INDEXES ----------------------
+
+// Customer Indices
+
+INDEX=IDX_ACCOUNT_PERMISSION
+ACCOUNT_PERMISSION,240000
+
+INDEX=IDX_CUSTOMER
+CUSTOMER,120000
+
+INDEX=IDX_CUSTOMER_ACCOUNT
+CUSTOMER_ACCOUNT,240000
+
+INDEX=IDX_CUSTOMER_ACCOUNT_C_ID
+CUSTOMER_ACCOUNT,240000
+
+INDEX=IDX_CUSTOMER_ACCOUNT_B_ID
+CUSTOMER_ACCOUNT,240000
+
+INDEX=IDX_CUSTOMER_TAXRATE
+CUSTOMER_TAXRATE,120000
+
+INDEX=IDX_HOLDING
+HOLDING,400000
+
+INDEX=IDX_HOLDING_CA_ID
+HOLDING,400000
+
+INDEX=IDX_HOLDING_S_SYMB
+HOLDING,400000
+
+INDEX=IDX_HOLDING_HISTORY
+HOLDING_HISTORY,400000
+
+INDEX=IDX_HOLDING_SUMMARY
+HOLDING_SUMMARY,240000
+
+INDEX=IDX_WATCH_ITEM
+WATCH_ITEM,1000
+
+INDEX=IDX_WATCH_LIST
+WATCH_LIST,100
+
+// Broker Indices
+
+INDEX=IDX_BROKER
+BROKER,120000
+
+INDEX=IDX_CASH_TRANSACTION
+CASH_TRANSACTION,400000
+
+INDEX=IDX_CHARGE
+CHARGE,100
+
+INDEX=IDX_COMMISSION_RATE
+COMMISSION_RATE,100
+
+INDEX=IDX_SETTLEMENT
+SETTLEMENT,400000
+
+INDEX=IDX_TRADE
+TRADE,400000
+
+INDEX=IDX_TRADE_CA_ID
+TRADE,400000
+
+INDEX=IDX_TRADE_S_SYMB
+TRADE,400000
+
+INDEX=IDX_TRADE_HISTORY
+TRADE_HISTORY,400000
+
+INDEX=IDX_TRADE_REQUEST
+TRADE_REQUEST,240000
+
+INDEX=IDX_TRADE_REQUEST_B_ID
+TRADE_REQUEST,240000
+
+INDEX=IDX_TRADE_REQUEST_S_SYMB
+TRADE_REQUEST,240000
+
+INDEX=IDX_TRADE_TYPE
+TRADE_TYPE,10
+
+// Market Indices
+
+INDEX=IDX_COMPANY
+COMPANY,1000
+
+INDEX=IDX_COMPANY_COMPETITOR
+COMPANY_COMPETITOR,1000
+
+INDEX=IDX_DAILY_MARKET
+DAILY_MARKET,240000
+
+INDEX=IDX_EXCHANGE
+EXCHANGE,10
+
+INDEX=IDX_FINANCIAL
+FINANCIAL,120000
+
+INDEX=IDX_INDUSTRY
+INDUSTRY,10
+
+INDEX=IDX_LAST_TRADE
+LAST_TRADE,120000
+
+INDEX=IDX_NEWS_ITEM
+NEWS_ITEM,1000
+
+INDEX=IDX_NEWS_XREF
+NEWS_XREF,1000
+
+INDEX=IDX_SECTOR
+SECTOR,10
+
+INDEX=IDX_SECURITY
+SECURITY,120000
+
+// Dimension Indices
+
+INDEX=IDX_ADDRESS
+ADDRESS,1000
+
+INDEX=IDX_STATUS_TYPE
+STATUS_TYPE,10
+
+INDEX=IDX_TAXRATE
+TAXRATE,10
+
+INDEX=IDX_ZIP_CODE
+ZIP_CODE,1000

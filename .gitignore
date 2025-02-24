@@ -1,0 +1,11 @@
+*.d
+*.o
+rundb
+.vscode
+.DS_Store
+temp.out
+log
+plot/figs
+core
+__pycache__
+scripts/__pycache__
